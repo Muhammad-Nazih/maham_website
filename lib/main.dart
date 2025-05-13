@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData
       .dark()
       .copyWith(textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)),
-      home: HomePage(),
+      home: LandingPage(),
     );
   }
 }
