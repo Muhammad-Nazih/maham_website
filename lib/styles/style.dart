@@ -4,8 +4,8 @@ import 'package:maham_website/constants/colors.dart';
 BoxDecoration kHeaderDecoration = BoxDecoration(
   gradient: LinearGradient(
     colors: [
-      Colors.transparent, 
-      CustomColor.bgLight1
+      Colors.white, 
+      CustomColor.scaffoldBg
       ],
     ),
   borderRadius: BorderRadius.circular(100.0),

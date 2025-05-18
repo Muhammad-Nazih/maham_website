@@ -10,38 +10,33 @@ class HeaderDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-            width: double.maxFinite,
-            height: 60.0,
-            margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-            decoration: kHeaderDecoration,
-            child: Row(
-              children: [
-                SiteLogo(onTap: () {
-                  
-                },),
-                IconButton(
-                  onPressed: () {},
-                  icon: Image.asset('assets/images/logo.png'),
-                ),
-                Spacer(),
+      width: double.maxFinite,
+      height: 60.0,
+      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+      decoration: kHeaderDecoration,
+      child: Row(
+        children: [
+          IconButton(onPressed: () {}, icon: Image.asset('images/logo.png')),
+          SiteLogo(onTap: () {}),
+          Spacer(),
 
-                for (int i = 0; i < navTitles.length; i++)
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20.0),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        navTitles[i],
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w500,
-                          color: CustomColor.whitePrimary,
-                        ),
-                      ),
-                    ),
+          for (int i = 0; i < navTitles.length; i++)
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: TextButton(
+                onPressed: () {},
+                child: Text(
+                  navTitles[i],
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                    color: CustomColor.whitePrimary,
                   ),
-              ],
+                ),
+              ),
             ),
-          );
+        ],
+      ),
+    );
   }
 }
