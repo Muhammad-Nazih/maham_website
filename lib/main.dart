@@ -28,9 +28,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Maham website',
       debugShowCheckedModeBanner: false,
-      locale: context.locale,
-      supportedLocales: context.supportedLocales,
-      localizationsDelegates: context.localizationDelegates,
+      // locale: context.locale,
+      // supportedLocales: context.supportedLocales,
+      // localizationsDelegates: context.localizationDelegates,
       theme: ThemeData.light(),
       home: const HomePage(),
     );
