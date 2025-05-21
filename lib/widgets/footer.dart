@@ -1,8 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class Footer extends StatelessWidget {
+class Footer extends StatefulWidget {
   const Footer({super.key});
 
+  @override
+  State<Footer> createState() => _FooterState();
+}
+
+class _FooterState extends State<Footer> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,7 +20,7 @@ class Footer extends StatelessWidget {
           buildLinksRow(),
           SizedBox(height: 12),
           Text(
-            '© 2025 Maham. All Rights Reserved',
+            '© 2025 Maham. All Rights Reserved'.tr(),
             style: TextStyle(
               color: Colors.grey[600],
               fontSize: 14,
@@ -27,12 +33,12 @@ class Footer extends StatelessWidget {
 
   Widget buildLinksRow() {
     final links = [
-      'Usage conditions',
-      'Terms and conditions',
-      'Privacy policy',
-      'Jobs applications',
-      'Contact us',
-      'Bazooka franchise',
+      'Usage conditions'.tr(),
+      'Terms and conditions'.tr(),
+      'Privacy policy'.tr(),
+      'Jobs applications'.tr(),
+      'Contact us'.tr(),
+      'franchise'.tr(),
     ];
 
     return Wrap(

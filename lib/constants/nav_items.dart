@@ -1,12 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-List<String> navTitles = [
-  'Home', 
-  'Skills', 
-  'Projects', 
-  'Blog', 
-  'Contact',
-  ];
+List<String> get navTitles => [
+  'Home'.tr(), 
+  'Skills'.tr(), 
+  'Projects'.tr(), 
+  'Blog'.tr(), 
+  'Contact'.tr(),
+];
 
   List<IconData> navIcons = [
   Icons.home,

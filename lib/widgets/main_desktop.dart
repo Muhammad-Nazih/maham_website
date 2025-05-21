@@ -1,9 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:maham_website/constants/colors.dart';
 
-class MainDesktop extends StatelessWidget {
+class MainDesktop extends StatefulWidget {
   const MainDesktop({super.key});
 
+  @override
+  State<MainDesktop> createState() => _MainDesktopState();
+}
+
+class _MainDesktopState extends State<MainDesktop> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -22,7 +28,7 @@ class MainDesktop extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Hi There, \nThis is Maham Business \nProcess Management Website',
+                  'main_title'.tr(),
                   maxLines: 3,
                   style: TextStyle(
                     height: 1.5,
@@ -40,7 +46,7 @@ class MainDesktop extends StatelessWidget {
                     ),
                     onPressed: () {},
                     child: Text(
-                      'Get In Touch',
+                      'get_in_touch'.tr(),
                       style: TextStyle(color: CustomColor.whitePrimary),
                     ),
                   ),
