@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:maham_website/constants/size.dart';
 import 'package:maham_website/widgets/drawer_mobile.dart';
@@ -59,13 +60,15 @@ class _HomePageState extends State<HomePage> {
                     ),
 
                   if (constraints.maxWidth >= kMinDesktopWidth)
-                    MainDesktop()
+                    MainDesktop(key: ValueKey(context.locale.languageCode))
                   else
-                    MainMobile(),
+                    MainMobile(key: ValueKey(context.locale.languageCode)),
 
-                  ScrollingBrandsBanner(),
+                  ScrollingBrandsBanner(
+                    key: ValueKey(context.locale.languageCode),
+                  ),
 
-                  Footer(),
+                  Footer(key: ValueKey(context.locale.languageCode)),
                 ],
               ),
             ],

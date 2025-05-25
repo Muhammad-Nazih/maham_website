@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:maham_website/constants/colors.dart';
-import 'package:maham_website/constants/nav_Items.dart';
+import 'package:maham_website/constants/nav_items.dart';
 
 class DrawerMobile extends StatelessWidget {
   const DrawerMobile({super.key});
@@ -32,7 +32,7 @@ class DrawerMobile extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
                 leading: Icon(navIcons[i]),
-                title: Text(navTitles[i]),
+                title: Text(getNavTitles(context)[i]),
               ),
           ],
         ),

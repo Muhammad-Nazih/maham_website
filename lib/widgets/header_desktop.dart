@@ -1,31 +1,24 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:maham_website/constants/colors.dart';
-import 'package:maham_website/constants/nav_Items.dart';
+import 'package:maham_website/constants/nav_items.dart';
 import 'package:maham_website/styles/style.dart';
 import 'package:maham_website/widgets/site_logo.dart';
 
-class HeaderDesktop extends StatefulWidget {
+class HeaderDesktop extends StatelessWidget {
   const HeaderDesktop({super.key});
 
   @override
-  State<HeaderDesktop> createState() => _HeaderDesktopState();
-}
-
-class _HeaderDesktopState extends State<HeaderDesktop> {
-  @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.maxFinite,
+      width: double.infinity,
       height: 60.0,
       margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
       decoration: kHeaderDecoration,
       child: Row(
         children: [
-          IconButton(onPressed: () {}, icon: Image.asset('images/logo.png')),
           SiteLogo(onTap: () {}),
           Spacer(),
-
           ElevatedButton(
             onPressed: () {
               final currentLocale = context.locale;
@@ -37,20 +30,23 @@ class _HeaderDesktopState extends State<HeaderDesktop> {
             },
             child: Row(
               children: [
-                Icon(Icons.translate, color: Colors.black,),
-                SizedBox(width: 10.0,),
-                Text('language'.tr(), style: TextStyle(color: Colors.deepOrange),),
+                Icon(Icons.translate, color: Colors.black),
+                SizedBox(width: 10.0),
+                Text(
+                  'language'.tr(),
+                  style: TextStyle(color: Colors.deepOrange),
+                ),
               ],
             ),
           ),
-          SizedBox(width: 30.0,),
-          for (int i = 0; i < navTitles.length; i++)
+          SizedBox(width: 30.0),
+          for (int i = 0; i < getNavTitles(context).length; i++)
             Padding(
               padding: const EdgeInsets.only(right: 20.0),
               child: TextButton(
                 onPressed: () {},
                 child: Text(
-                  navTitles[i],
+                  getNavTitles(context)[i],
                   style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w500,

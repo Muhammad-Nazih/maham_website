@@ -2,23 +2,19 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:maham_website/constants/colors.dart';
 
-class MainDesktop extends StatefulWidget {
+class MainDesktop extends StatelessWidget {
   const MainDesktop({super.key});
 
-  @override
-  State<MainDesktop> createState() => _MainDesktopState();
-}
-
-class _MainDesktopState extends State<MainDesktop> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
+
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20.0),
+      margin: const EdgeInsets.symmetric(horizontal: 20.0),
       height: screenHeight / 1.2,
-      constraints: BoxConstraints(minHeight: 350.0),
+      constraints: const BoxConstraints(minHeight: 350.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -37,7 +33,7 @@ class _MainDesktopState extends State<MainDesktop> {
                     color: CustomColor.scaffoldBg,
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 SizedBox(
                   width: 250.0,
                   child: ElevatedButton(
@@ -47,7 +43,7 @@ class _MainDesktopState extends State<MainDesktop> {
                     onPressed: () {},
                     child: Text(
                       'get_in_touch'.tr(),
-                      style: TextStyle(color: CustomColor.whitePrimary),
+                      style: const TextStyle(color: CustomColor.whitePrimary),
                     ),
                   ),
                 ),

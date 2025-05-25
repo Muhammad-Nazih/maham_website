@@ -10,16 +10,19 @@ class SiteLogo extends StatelessWidget {
       onTap: onTap,
       child: Row(
         children: [
+          IconButton(
+            onPressed: () {},
+            icon: Image.asset('images/maham_logo.png'),
+          ),
           Text(
             'MAHAM',
             style: TextStyle(
               fontSize: 22.0,
               fontWeight: FontWeight.bold,
               // decoration: TextDecoration.underline,
-              color: CustomColor.scaffoldBg,
+              color: CustomColor.whitePrimary,
             ),
           ),
-          
         ],
       ),
     );
