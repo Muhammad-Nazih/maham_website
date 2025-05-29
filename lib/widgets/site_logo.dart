@@ -6,24 +6,28 @@ class SiteLogo extends StatelessWidget {
   final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
-      child: Row(
-        children: [
-          IconButton(
-            onPressed: () {},
-            icon: Image.asset('images/maham_logo.png'),
-          ),
-          Text(
-            'MAHAM',
-            style: TextStyle(
-              fontSize: 22.0,
-              fontWeight: FontWeight.bold,
-              // decoration: TextDecoration.underline,
-              color: CustomColor.whitePrimary,
+      hoverColor: Colors.transparent,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          children: [
+            Image.asset('images/maham_logo.png',
+            width: 40.0,
+            height: 40.0,
             ),
-          ),
-        ],
+            Text(
+              'MAHAM',
+              style: TextStyle(
+                fontSize: 22.0,
+                fontWeight: FontWeight.bold,
+                // decoration: TextDecoration.underline,
+                color: CustomColor.whitePrimary,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

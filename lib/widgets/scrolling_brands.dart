@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SubBrand {
   final String name;
@@ -99,6 +100,32 @@ class AnimatedBrandCard extends StatefulWidget {
 
 class AnimatedBrandCardState extends State<AnimatedBrandCard> {
   bool _hovering = false;
+
+  void handleTap() {
+    final url = _getBrandUrl(widget.brand.name);
+    _launchUrl(url);
+  }
+
+  String _getBrandUrl(String brandName) {
+    switch (brandName) {
+      case 'Codelytical':
+        return 'https://codelytical.com';
+      case 'Control Lines':
+        return 'https://control-lines.com';
+      default:
+        return 'https://default-brand.com';
+    }
+  }
+
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      debugPrint('Could not launch $url');
+    }
+  }
+  
 
   @override
   Widget build(BuildContext context) {
