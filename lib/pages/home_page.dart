@@ -10,7 +10,7 @@ import 'package:maham_website/widgets/main_mobile.dart';
 import 'package:maham_website/widgets/scrolling_brands.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required String language});
 
   @override
   State<HomePage> createState() => _HomePageState();

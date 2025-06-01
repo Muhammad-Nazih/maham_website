@@ -1,5 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:maham_website/pages/brands_pages/antinoopolis.dart';
+import 'package:maham_website/pages/brands_pages/codelytical.dart';
+import 'package:maham_website/pages/brands_pages/control_lines.dart';
+import 'package:maham_website/pages/brands_pages/pro_guard.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SubBrand {
@@ -101,78 +105,83 @@ class AnimatedBrandCard extends StatefulWidget {
 class AnimatedBrandCardState extends State<AnimatedBrandCard> {
   bool _hovering = false;
 
-  void handleTap() {
-    final url = _getBrandUrl(widget.brand.name);
-    _launchUrl(url);
-  }
-
-  String _getBrandUrl(String brandName) {
-    switch (brandName) {
-      case 'Codelytical':
-        return 'https://codelytical.com';
-      case 'Control Lines':
-        return 'https://control-lines.com';
-      default:
-        return 'https://default-brand.com';
-    }
-  }
-
-  Future<void> _launchUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
-    } else {
-      debugPrint('Could not launch $url');
-    }
-  }
-  
-
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
       onEnter: (_) => setState(() => _hovering = true),
       onExit: (_) => setState(() => _hovering = false),
-      child: AnimatedScale(
-        scale: _hovering ? 1.07 : 1.0,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-        child: Container(
-          width: widget.width,
-          margin: const EdgeInsets.symmetric(horizontal: 16),
-          child: AnimatedOpacity(
-            duration: const Duration(milliseconds: 300),
-            opacity: _hovering ? 1.0 : 0.85,
-            child: Card(
-              color: Colors.white.withOpacity(0.95),
-              elevation: _hovering ? 10 : 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Image.asset(
-                        widget.brand.logoUrl,
-                        fit: BoxFit.contain,
+      child: GestureDetector(
+        onTap: () {
+          // هنا بنختار اسم الـ route المناسب
+          String? route;
+          if (widget.brand.name == 'Codelytical') {
+            route = '/codelytical';
+          } else if (widget.brand.name == 'Control Lines') {
+            route = '/control_lines';
+          } else if (widget.brand.name == 'Pro Guard') {
+            route = '/pro_guard';
+          } else if (widget.brand.name == 'Antinoopolis') {
+            route = '/antinoopolis';
+          } else if (widget.brand.name == 'Crinkle') {
+            route = '/crinkle';
+          } else if (widget.brand.name == 'Kuken') {
+            route = '/kuken';
+          } else if (widget.brand.name == 'Emdad') {
+            route = '/emdad';
+          } else if (widget.brand.name == 'إمداد') {
+            route = '/إمداد';
+          } else if (widget.brand.name == 'Cartel') {
+            route = '/cartel';
+          }
+          // ... باقي الصفحات
+
+          if (route != null) {
+            Navigator.pushNamed(context, route);
+          }
+        },
+
+        child: AnimatedScale(
+          scale: _hovering ? 1.07 : 1.0,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          child: Container(
+            width: widget.width,
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 300),
+              opacity: _hovering ? 1.0 : 0.85,
+              child: Card(
+                color: Colors.white.withOpacity(0.95),
+                elevation: _hovering ? 10 : 2,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Image.asset(
+                          widget.brand.logoUrl,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: Text(
-                      widget.brand.name,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                        color: Colors.black,
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: Text(
+                        widget.brand.name,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
