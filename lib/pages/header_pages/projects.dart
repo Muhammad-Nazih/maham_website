@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Projects extends StatelessWidget {
-  const Projects({super.key});
+  const Projects({super.key, required String language});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Blog extends StatelessWidget {
-  const Blog({super.key});
+  const Blog({super.key, required String language});
 
   @override
   Widget build(BuildContext context) {

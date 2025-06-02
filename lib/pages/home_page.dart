@@ -9,18 +9,15 @@ import 'package:maham_website/widgets/main_desktop.dart';
 import 'package:maham_website/widgets/main_mobile.dart';
 import 'package:maham_website/widgets/scrolling_brands.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, required String language});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
+class HomePage extends StatelessWidget {
+  final String language;
+  final Widget? child;
+  const HomePage({super.key, required this.language, this.child});
 
   @override
   Widget build(BuildContext context) {
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
@@ -58,7 +55,6 @@ class _HomePageState extends State<HomePage> {
                         scaffoldKey.currentState?.openEndDrawer();
                       },
                     ),
-
                   if (constraints.maxWidth >= kMinDesktopWidth)
                     MainDesktop(key: ValueKey(context.locale.languageCode))
                   else

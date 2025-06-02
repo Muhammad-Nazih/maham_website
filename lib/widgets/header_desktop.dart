@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:maham_website/constants/colors.dart';
 import 'package:maham_website/constants/components.dart';
 import 'package:maham_website/constants/nav_items.dart';
@@ -57,14 +58,22 @@ class HeaderDesktop extends StatelessWidget {
                 onPressed: () {
                   if (i == 0) {
                     html.window.location.reload();
-                  } else if(i == 1){
-                    navigateTo(context, Skills());
-                  } else if(i == 2){
-                    navigateTo(context, Projects());
-                  } else if(i == 3){
-                    navigateTo(context, Blog());
-                  } else if(i == 4){
-                    navigateTo(context, Contact());
+                  } else if (i == 1) {
+                    final lang =
+                        context.locale.languageCode; // أو أي طريقة تجيب اللغة
+                    context.go('/$lang/skills');
+                  } else if (i == 2) {
+                    final lang =
+                        context.locale.languageCode; 
+                    context.go('/$lang/projects');
+                  } else if (i == 3) {
+                    final lang =
+                        context.locale.languageCode; 
+                    context.go('/$lang/blog');
+                  } else if (i == 4) {
+                    final lang =
+                        context.locale.languageCode; 
+                    context.go('/$lang/contact');
                   }
                 },
                 child: Text(

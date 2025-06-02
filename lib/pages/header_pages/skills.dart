@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Skills extends StatelessWidget {
-  const Skills({super.key});
+  final String language;
+  const Skills({super.key, required this.language});
 
   @override
   Widget build(BuildContext context) {
