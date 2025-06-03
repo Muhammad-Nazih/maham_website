@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:maham_website/constants/colors.dart';
 import 'package:maham_website/dio_helper.dart';
 import 'package:maham_website/services/api_service.dart';
@@ -30,7 +31,6 @@ class MainDesktop extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
-
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20.0),
       height: screenHeight / 1.2,
@@ -61,7 +61,8 @@ class MainDesktop extends StatelessWidget {
                       backgroundColor: Colors.deepOrange,
                     ),
                     onPressed: () {
-                      _fetchAboutUs();
+                      final lang = context.locale.languageCode;
+                      context.go('/$lang/contact');
                     },
                     child: Text(
                       'get_in_touch'.tr(),

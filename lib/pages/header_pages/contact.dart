@@ -1,12 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:maham_website/widgets/master_layout.dart';
 
 class Contact extends StatelessWidget {
-  const Contact({super.key, required String language});
+  final String language;
+  const Contact({super.key, required this.language});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return MasterLayout(
+      child: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
@@ -36,8 +39,8 @@ class Contact extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              'Contact us',
+                            Text(
+                              'contact_us'.tr(),
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
@@ -51,8 +54,8 @@ class Contact extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        'Name',
+                                      Text(
+                                        'name'.tr(),
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black,
@@ -61,7 +64,7 @@ class Contact extends StatelessWidget {
                                       const SizedBox(height: 8),
                                       TextField(
                                         decoration: InputDecoration(
-                                          hintText: 'Enter your name',
+                                          hintText: 'name_hint'.tr(), 
                                           filled: true,
                                           fillColor: Colors.white.withOpacity(0.9),
                                           border: OutlineInputBorder(
@@ -81,8 +84,8 @@ class Contact extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        'Last name',
+                                      Text(
+                                        'last_name'.tr(),
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black,
@@ -91,7 +94,7 @@ class Contact extends StatelessWidget {
                                       const SizedBox(height: 8),
                                       TextField(
                                         decoration: InputDecoration(
-                                          hintText: 'Enter your last name',
+                                          hintText: 'last_name_hint'.tr(),
                                           filled: true,
                                           fillColor: Colors.white.withOpacity(0.9),
                                           border: OutlineInputBorder(
@@ -115,8 +118,8 @@ class Contact extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        'Email',
+                                      Text(
+                                        'email'.tr(),
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black,
@@ -125,7 +128,7 @@ class Contact extends StatelessWidget {
                                       const SizedBox(height: 8),
                                       TextField(
                                         decoration: InputDecoration(
-                                          hintText: 'Enter your email address',
+                                          hintText: 'email_hint'.tr(),
                                           filled: true,
                                           fillColor: Colors.white.withOpacity(0.9),
                                           border: OutlineInputBorder(
@@ -145,8 +148,8 @@ class Contact extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        'Phone',
+                                      Text(
+                                        'phone'.tr(),
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black,
@@ -156,7 +159,7 @@ class Contact extends StatelessWidget {
                                       TextField(
                                         keyboardType: TextInputType.phone,
                                         decoration: InputDecoration(
-                                          hintText: 'Enter your phone number',
+                                          hintText: 'phone_hint'.tr(),
                                           filled: true,
                                           fillColor: Colors.white.withOpacity(0.9),
                                           border: OutlineInputBorder(
@@ -177,8 +180,8 @@ class Contact extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  'Subject',
+                                Text(
+                                  'subject'.tr(),
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
@@ -187,7 +190,7 @@ class Contact extends StatelessWidget {
                                 const SizedBox(height: 8),
                                 TextField(
                                   decoration: InputDecoration(
-                                    hintText: 'Enter message subject',
+                                    hintText: 'subject_hint'.tr(),
                                     filled: true,
                                     fillColor: Colors.white.withOpacity(0.9),
                                     border: OutlineInputBorder(
@@ -205,8 +208,8 @@ class Contact extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  'Message',
+                                Text(
+                                  'message'.tr(),
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
@@ -216,7 +219,7 @@ class Contact extends StatelessWidget {
                                 TextField(
                                   maxLines: 5,
                                   decoration: InputDecoration(
-                                    hintText: 'Type your message here...',
+                                    hintText: 'message_hint'.tr(),
                                     filled: true,
                                     fillColor: Colors.white.withOpacity(0.9),
                                     border: OutlineInputBorder(
@@ -245,8 +248,8 @@ class Contact extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(4.0),
                                     ),
                                   ),
-                                  child: const Text(
-                                    'Send',
+                                  child: Text(
+                                    'send'.tr(),
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,

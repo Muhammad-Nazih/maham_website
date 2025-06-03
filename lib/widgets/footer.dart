@@ -7,6 +7,7 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       color: Colors.grey[200],
       padding: const EdgeInsets.symmetric(vertical: 24),
       child: Column(

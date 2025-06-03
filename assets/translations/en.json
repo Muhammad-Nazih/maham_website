@@ -13,7 +13,21 @@
   "franchise": "Franchise",
   "main_title": "Hi There,\nThis is Maham Business\nProcess Management Website",
   "get_in_touch": "Get In Touch",
-  "© 2025 Maham. All Rights Reserved": "© 2025 Maham. All Rights Reserved"
+  "© 2025 Maham. All Rights Reserved": "© 2025 Maham. All Rights Reserved",
+  "contact_us": "Contact us",
+  "name": "Name",
+  "last_name": "Last name",
+  "email": "Email",
+  "phone": "Phone",
+  "subject": "Subject",
+  "message": "Message",
+  "send": "Send",
+  "name_hint": "Enter your name",
+  "last_name_hint": "Enter your last name",
+  "email_hint": "Enter your email address",
+  "phone_hint": "Enter your phone number",
+  "subject_hint": "Enter message subject",
+  "message_hint": "Type your message here..."
 }
 
 

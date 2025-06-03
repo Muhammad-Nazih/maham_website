@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maham_website/widgets/master_layout.dart';
 
 class Skills extends StatelessWidget {
   final String language;
@@ -6,10 +7,12 @@ class Skills extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Skills',
-        style: TextStyle(fontSize: 120, fontWeight: FontWeight.bold, color: Colors.deepOrange,),
+    return MasterLayout(
+      child: Center(
+        child: Text(
+          'Skills',
+          style: TextStyle(fontSize: 120, fontWeight: FontWeight.bold, color: Colors.deepOrange,),
+        ),
       ),
     );
   }

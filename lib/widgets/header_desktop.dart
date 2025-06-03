@@ -17,6 +17,7 @@ class HeaderDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentLang = context.locale.languageCode;
     return Container(
       width: double.infinity,
       height: 60.0,
@@ -26,18 +27,31 @@ class HeaderDesktop extends StatelessWidget {
         children: [
           SiteLogo(
             onTap: () {
-              html.window.location.reload();
+              context.go('/$currentLang');
             },
           ),
           Spacer(),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
               final currentLocale = context.locale;
               final newLocale =
                   currentLocale.languageCode == 'en'
                       ? const Locale('ar')
                       : const Locale('en');
+
+              // Get current route location
+              final currentLocation = GoRouterState.of(context).uri.path;
+
+              // Replace the language part in the path
+              final newPath = currentLocation.replaceFirst(
+                '/${currentLocale.languageCode}',
+                '/${newLocale.languageCode}',
+              );
+
+              // Change locale and navigate to the same path but with new language
               context.setLocale(newLocale);
+              await Future.delayed(const Duration(milliseconds: 50));
+              context.go(newPath);
             },
             child: Row(
               children: [
@@ -56,24 +70,23 @@ class HeaderDesktop extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: TextButton(
                 onPressed: () {
-                  if (i == 0) {
-                    html.window.location.reload();
-                  } else if (i == 1) {
-                    final lang =
-                        context.locale.languageCode; // أو أي طريقة تجيب اللغة
-                    context.go('/$lang/skills');
-                  } else if (i == 2) {
-                    final lang =
-                        context.locale.languageCode; 
-                    context.go('/$lang/projects');
-                  } else if (i == 3) {
-                    final lang =
-                        context.locale.languageCode; 
-                    context.go('/$lang/blog');
-                  } else if (i == 4) {
-                    final lang =
-                        context.locale.languageCode; 
-                    context.go('/$lang/contact');
+                  final lang = context.locale.languageCode;
+                  switch (i) {
+                    case 0: // Home
+                      context.go('/$lang');
+                      break;
+                    case 1: // Skills
+                      context.go('/$lang/skills');
+                      break;
+                    case 2: // Projects
+                      context.go('/$lang/projects');
+                      break;
+                    case 3: // Blog
+                      context.go('/$lang/blog');
+                      break;
+                    case 4: // Contact
+                      context.go('/$lang/contact');
+                      break;
                   }
                 },
                 child: Text(
