@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:maham_website/pages/brands_pages/codelytical.dart';
 import 'package:maham_website/pages/header_pages/blog.dart';
 import 'package:maham_website/pages/header_pages/contact.dart';
 import 'package:maham_website/pages/header_pages/projects.dart';

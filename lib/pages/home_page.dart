@@ -12,7 +12,7 @@ import 'package:maham_website/widgets/scrolling_brands.dart';
 class HomePage extends StatelessWidget {
   final String language;
   final Widget? child;
-  const HomePage({super.key, required this.language, this.child});
+  const HomePage({super.key, required this.language, this.child, String? section});
 
   @override
   Widget build(BuildContext context) {
