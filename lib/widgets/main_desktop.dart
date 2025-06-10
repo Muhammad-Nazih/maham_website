@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:maham_website/constants/colors.dart';
 import 'package:maham_website/dio_helper.dart';
+import 'package:maham_website/pages/mainDesk_pages/posts_screen.dart';
 import 'package:maham_website/services/api_service.dart';
 
 class MainDesktop extends StatelessWidget {
   const MainDesktop({super.key});
 
-  void getPosts() async {
+  void getPosts(BuildContext context) async {
     try {
       // هنا بنستدعي الدالة من ملف dio_helper.dart
       var response = await DioHelper.getData(url: 'posts');
-      print(response.data); // دي هتطبع البيانات في الـ console
+      List<dynamic> posts = response.data;
+      print(posts); // دي هتطبع البيانات في الـ console
     } catch (e) {
       print('Error: $e');
     }
@@ -75,7 +77,8 @@ class MainDesktop extends StatelessWidget {
                   width: 250.0,
                   child: ElevatedButton(
                     onPressed: () {
-                      getPosts();
+                      final lang = context.locale.languageCode;
+                      context.go('/$lang/posts');
                     },
                     child: Text('Get Posts (Test)'),
                   ),

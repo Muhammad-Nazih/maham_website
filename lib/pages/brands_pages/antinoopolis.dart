@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Antinoopolis extends StatelessWidget {
-  const Antinoopolis({super.key});
+  const Antinoopolis({super.key, required String language});
 
   @override
   Widget build(BuildContext context) {

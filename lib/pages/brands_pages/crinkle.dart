@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Crinkle extends StatelessWidget {
-  const Crinkle({super.key});
+  const Crinkle({super.key, required String language});
 
   @override
   Widget build(BuildContext context) {

@@ -1,10 +1,5 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:maham_website/pages/brands_pages/antinoopolis.dart';
-import 'package:maham_website/pages/brands_pages/codelytical.dart';
-import 'package:maham_website/pages/brands_pages/control_lines.dart';
-import 'package:maham_website/pages/brands_pages/pro_guard.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
 
 class SubBrand {
   final String name;
@@ -22,7 +17,6 @@ class ScrollingBrandsBanner extends StatefulWidget {
 
 class ScrollingBrandsBannerState extends State<ScrollingBrandsBanner> {
   late ScrollController scrollController;
-  late Timer timer;
 
   final List<SubBrand> brands = [
     SubBrand(name: 'Codelytical', logoUrl: 'images/codelytical.png'),
@@ -36,53 +30,84 @@ class ScrollingBrandsBannerState extends State<ScrollingBrandsBanner> {
     SubBrand(name: 'إمداد', logoUrl: 'images/emdad_ar.png'),
   ];
 
+  final double spacing = 32; // 16 left + 16 right margin
+
   @override
   void initState() {
     super.initState();
     scrollController = ScrollController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => startAutoScroll());
-  }
-
-  void startAutoScroll() {
-    timer = Timer.periodic(const Duration(milliseconds: 5), (timer) {
-      if (scrollController.hasClients) {
-        final maxScroll = scrollController.position.maxScrollExtent;
-        final currentScroll = scrollController.offset;
-        final nextScroll = currentScroll + 1;
-
-        if (nextScroll >= maxScroll / 2) {
-          scrollController.jumpTo(currentScroll - maxScroll / 2);
-        } else {
-          scrollController.jumpTo(nextScroll);
-        }
-      }
-    });
   }
 
   @override
   void dispose() {
-    timer.cancel();
     scrollController.dispose();
     super.dispose();
+  }
+
+  void scrollCards(double cardWidth, {required bool forward}) {
+    final offsetPerCard = cardWidth + spacing;
+    final maxScroll = scrollController.position.maxScrollExtent;
+    final currentScroll = scrollController.offset;
+
+    double nextScroll =
+        forward ? currentScroll + offsetPerCard : currentScroll - offsetPerCard;
+
+    // Looping logic
+    if (nextScroll > maxScroll - offsetPerCard) {
+      nextScroll = 0; // رجع للبداية
+    } else if (nextScroll < 0) {
+      nextScroll = maxScroll; // راح للنهاية
+    }
+
+    scrollController.animateTo(
+      nextScroll,
+      duration: const Duration(milliseconds: 400),
+      curve: Curves.easeInOut,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final cardWidth = screenWidth / 3.2; // show ~3 cards at a time
+    final int cardsPerView = 3;
+    final cardWidth =
+        (screenWidth - (spacing * cardsPerView )) / cardsPerView;
 
     return Container(
       height: 250,
       padding: const EdgeInsets.symmetric(vertical: 20),
       color: Colors.black.withOpacity(0.2),
-      child: ListView.builder(
-        controller: scrollController,
-        scrollDirection: Axis.horizontal,
-        itemCount: brands.length * 2,
-        itemBuilder: (context, index) {
-          final brand = brands[index % brands.length];
-          return AnimatedBrandCard(brand: brand, width: cardWidth);
-        },
+      child: Row(
+        children: [
+          IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+              size: 50,
+            ),
+            onPressed: () => scrollCards(cardWidth, forward: false),
+          ),
+          Expanded(
+            child: ListView.builder(
+              padding: EdgeInsets.zero,
+              controller: scrollController,
+              scrollDirection: Axis.horizontal,
+              itemCount: brands.length,
+              itemBuilder: (context, index) {
+                final brand = brands[index % brands.length];
+                return AnimatedBrandCard(brand: brand, width: cardWidth);
+              },
+            ),
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.black,
+              size: 50,
+            ),
+            onPressed: () => scrollCards(cardWidth, forward: true),
+          ),
+        ],
       ),
     );
   }
@@ -112,36 +137,45 @@ class AnimatedBrandCardState extends State<AnimatedBrandCard> {
       onExit: (_) => setState(() => _hovering = false),
       child: GestureDetector(
         onTap: () {
-          // هنا بنختار اسم الـ route المناسب
+          String lang = Localizations.localeOf(context).languageCode;
           String? route;
-          if (widget.brand.name == 'Codelytical') {
-            route = '/codelytical';
-          } else if (widget.brand.name == 'Control Lines') {
-            route = '/control_lines';
-          } else if (widget.brand.name == 'Pro Guard') {
-            route = '/pro_guard';
-          } else if (widget.brand.name == 'Antinoopolis') {
-            route = '/antinoopolis';
-          } else if (widget.brand.name == 'Crinkle') {
-            route = '/crinkle';
-          } else if (widget.brand.name == 'Kuken') {
-            route = '/kuken';
-          } else if (widget.brand.name == 'Emdad') {
-            route = '/emdad';
-          } else if (widget.brand.name == 'إمداد') {
-            route = '/إمداد';
-          } else if (widget.brand.name == 'Cartel') {
-            route = '/cartel';
+
+          switch (widget.brand.name) {
+            case 'Codelytical':
+              route = '/$lang/codelytical';
+              break;
+            case 'Control Lines':
+              route = '/$lang/control_lines';
+              break;
+            case 'Pro Guard':
+              route = '/$lang/pro_guard';
+              break;
+            case 'Antinoopolis':
+              route = '/$lang/antinoopolis';
+              break;
+            case 'Crinkle':
+              route = '/$lang/crinkle';
+              break;
+            case 'Küken':
+              route = '/$lang/kuken';
+              break;
+            case 'Emdad':
+              route = '/$lang/emdad';
+              break;
+            case 'إمداد':
+              route = '/$lang/إمداد';
+              break;
+            case 'Cartel':
+              route = '/$lang/cartel';
+              break;
           }
-          // ... باقي الصفحات
 
           if (route != null) {
-            Navigator.pushNamed(context, route);
+            context.go(route);
           }
         },
-
         child: AnimatedScale(
-          scale: _hovering ? 1.07 : 1.0,
+          scale: _hovering ? 1.03 : 1.0,
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
           child: Container(

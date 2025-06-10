@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProGuard extends StatelessWidget {
-  const ProGuard({super.key});
+  const ProGuard({super.key, required String language});
 
   @override
   Widget build(BuildContext context) {

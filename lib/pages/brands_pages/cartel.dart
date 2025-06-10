@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Cartel extends StatelessWidget {
-  const Cartel({super.key});
+  const Cartel({super.key, required String language});
 
   @override
   Widget build(BuildContext context) {

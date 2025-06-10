@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ControlLines extends StatelessWidget {
-  const ControlLines({super.key});
+  const ControlLines({super.key, required String language});
 
   @override
   Widget build(BuildContext context) {

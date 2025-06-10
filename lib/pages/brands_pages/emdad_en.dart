@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class EmdadEn extends StatelessWidget {
-  const EmdadEn({super.key});
+  const EmdadEn({super.key, required String language});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Codelytical extends StatelessWidget {
-  const Codelytical({super.key, required String language, required String brand});
+    final String language;
+
+  const Codelytical({super.key, required this.language});
 
   @override
   Widget build(BuildContext context) {
