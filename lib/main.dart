@@ -59,69 +59,7 @@ final GoRouter _router = GoRouter(
         return Contact(language: lang);
       },
     ),
-    // GoRoute(
-    //   path: '/:lang/skills',
-    //   builder: (context, state) {
-    //     final lang = state.pathParameters['lang']!;
-    //     return Skills(language: lang);
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/:lang/skills',
-    //   builder: (context, state) {
-    //     final lang = state.pathParameters['lang']!;
-    //     return Skills(language: lang);
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/:lang/skills',
-    //   builder: (context, state) {
-    //     final lang = state.pathParameters['lang']!;
-    //     return Skills(language: lang);
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/:lang/skills',
-    //   builder: (context, state) {
-    //     final lang = state.pathParameters['lang']!;
-    //     return Skills(language: lang);
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/:lang/skills',
-    //   builder: (context, state) {
-    //     final lang = state.pathParameters['lang']!;
-    //     return Skills(language: lang);
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/:lang/skills',
-    //   builder: (context, state) {
-    //     final lang = state.pathParameters['lang']!;
-    //     return Skills(language: lang);
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/:lang/skills',
-    //   builder: (context, state) {
-    //     final lang = state.pathParameters['lang']!;
-    //     return Skills(language: lang);
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/:lang/skills',
-    //   builder: (context, state) {
-    //     final lang = state.pathParameters['lang']!;
-    //     return Skills(language: lang);
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/:lang/skills',
-    //   builder: (context, state) {
-    //     final lang = state.pathParameters['lang']!;
-    //     return Skills(language: lang);
-    //   },
-    // ),
+
   ],
 );
 

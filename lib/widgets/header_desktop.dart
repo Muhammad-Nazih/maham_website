@@ -33,24 +33,25 @@ class HeaderDesktop extends StatelessWidget {
           Spacer(),
           ElevatedButton(
             onPressed: () async {
-              final currentLocale = context.locale;
               final newLocale =
-                  currentLocale.languageCode == 'en'
+                  context.locale.languageCode == 'en'
                       ? const Locale('ar')
                       : const Locale('en');
 
-              // Get current route location
-              final currentLocation = GoRouterState.of(context).uri.path;
-
-              // Replace the language part in the path
-              final newPath = currentLocation.replaceFirst(
-                '/${currentLocale.languageCode}',
+              // 1. Get current path and prepare new path
+              final currentPath = GoRouterState.of(context).uri.path;
+              final newPath = currentPath.replaceFirst(
+                '/${context.locale.languageCode}',
                 '/${newLocale.languageCode}',
               );
 
-              // Change locale and navigate to the same path but with new language
-              context.setLocale(newLocale);
-              await Future.delayed(const Duration(milliseconds: 50));
+              // 2. Change the locale FIRST to trigger rebuild
+              await context.setLocale(newLocale);
+
+              // 3. Wait for the next frame to ensure widgets rebuilt
+              await Future.delayed(Duration.zero);
+
+              // 4. Update the URL without triggering rebuild
               context.go(newPath);
             },
             child: Row(
