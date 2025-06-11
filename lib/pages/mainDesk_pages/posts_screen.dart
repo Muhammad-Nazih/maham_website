@@ -1,6 +1,7 @@
 // 📄 posts_screen.dart
 import 'package:flutter/material.dart';
 import 'package:maham_website/dio_helper.dart';
+import 'package:maham_website/widgets/master_layout.dart';
 
 
 class PostsScreen extends StatelessWidget {
@@ -15,32 +16,34 @@ class PostsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(language == 'ar' ? 'المنشورات' : 'Posts')),
-      body: FutureBuilder<List<dynamic>>(
-        future: _fetchPosts(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          if (snapshot.hasError) {
-            return Center(
-              child: Text(language == 'ar'
-                  ? 'حدث خطأ أثناء تحميل البيانات'
-                  : 'Error loading data'),
+    return MasterLayout(
+      child: Scaffold(
+        appBar: AppBar(title: Text(language == 'ar' ? 'المنشورات' : 'Posts')),
+        body: FutureBuilder<List<dynamic>>(
+          future: _fetchPosts(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+      
+            if (snapshot.hasError) {
+              return Center(
+                child: Text(language == 'ar'
+                    ? 'حدث خطأ أثناء تحميل البيانات'
+                    : 'Error loading data'),
+              );
+            }
+      
+            final List posts = snapshot.data!;
+            return ListView.builder(
+              itemCount: posts.length,
+              itemBuilder: (context, index) => ListTile(
+                title: Text(posts[index]['title']),
+                subtitle: Text(posts[index]['body']),
+              ),
             );
-          }
-
-          final List posts = snapshot.data!;
-          return ListView.builder(
-            itemCount: posts.length,
-            itemBuilder: (context, index) => ListTile(
-              title: Text(posts[index]['title']),
-              subtitle: Text(posts[index]['body']),
-            ),
-          );
-        },
+          },
+        ),
       ),
     );
   }

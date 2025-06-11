@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:maham_website/dio_helper.dart';
 import 'package:maham_website/widgets/master_layout.dart';
 
-class Codelytical extends StatelessWidget {
+class UsageConditions extends StatelessWidget {
     final String language;
 
-  const Codelytical({super.key, required this.language});
+  const UsageConditions({super.key, required this.language});
 
   Future<List<dynamic>> _fetchPosts() async {
     final response = await DioHelper.getData(url: 'posts');
@@ -16,7 +16,7 @@ class Codelytical extends StatelessWidget {
   Widget build(BuildContext context) {
     return MasterLayout(
       child: Scaffold(
-        appBar: AppBar(title: Text(language == 'ar' ? 'كودليتكال' : 'Codelytical')),
+        appBar: AppBar(title: Text(language == 'ar' ? 'شروط الإستخدام' : 'Usage Conditions')),
         body: FutureBuilder<List<dynamic>>(
           future: _fetchPosts(),
           builder: (context, snapshot) {

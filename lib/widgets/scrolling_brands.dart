@@ -20,17 +20,17 @@ class ScrollingBrandsBannerState extends State<ScrollingBrandsBanner> {
 
   final List<SubBrand> brands = [
     SubBrand(name: 'Codelytical', logoUrl: 'images/codelytical.png'),
+    SubBrand(name: 'Crinkle', logoUrl: 'images/crinkle.png'),
+    SubBrand(name: 'Emdad', logoUrl: 'images/emdad_en.png'),
     SubBrand(name: 'Control Lines', logoUrl: 'images/control_lines.png'),
     SubBrand(name: 'Pro Guard', logoUrl: 'images/pro_guard.png'),
     SubBrand(name: 'Antinoopolis', logoUrl: 'images/antinoopolis.png'),
-    SubBrand(name: 'Emdad', logoUrl: 'images/emdad_en.png'),
     SubBrand(name: 'Küken', logoUrl: 'images/kuken.png'),
-    SubBrand(name: 'Crinkle', logoUrl: 'images/crinkle.png'),
     SubBrand(name: 'Cartel', logoUrl: 'images/cartel.png'),
     SubBrand(name: 'إمداد', logoUrl: 'images/emdad_ar.png'),
   ];
 
-  final double spacing = 32; // 16 left + 16 right margin
+  final double spacing = 16; // 16 left + 16 right margin
 
   @override
   void initState() {
@@ -70,8 +70,10 @@ class ScrollingBrandsBannerState extends State<ScrollingBrandsBanner> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final int cardsPerView = 3;
+    const double cardScaleFactor = 0.91;
     final cardWidth =
-        (screenWidth - (spacing * cardsPerView )) / cardsPerView;
+        ((screenWidth - (spacing * (cardsPerView - 1))) / cardsPerView) *
+        cardScaleFactor;
 
     return Container(
       height: 250,
@@ -88,7 +90,7 @@ class ScrollingBrandsBannerState extends State<ScrollingBrandsBanner> {
             onPressed: () => scrollCards(cardWidth, forward: false),
           ),
           Expanded(
-            child: ListView.builder(
+            child: ListView.separated(
               padding: EdgeInsets.zero,
               controller: scrollController,
               scrollDirection: Axis.horizontal,
@@ -97,8 +99,10 @@ class ScrollingBrandsBannerState extends State<ScrollingBrandsBanner> {
                 final brand = brands[index % brands.length];
                 return AnimatedBrandCard(brand: brand, width: cardWidth);
               },
+              separatorBuilder: (context, index) => SizedBox(width: spacing),
             ),
           ),
+
           IconButton(
             icon: const Icon(
               Icons.arrow_forward_ios,
@@ -135,6 +139,7 @@ class AnimatedBrandCardState extends State<AnimatedBrandCard> {
     return MouseRegion(
       onEnter: (_) => setState(() => _hovering = true),
       onExit: (_) => setState(() => _hovering = false),
+      cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: () {
           String lang = Localizations.localeOf(context).languageCode;
@@ -180,7 +185,7 @@ class AnimatedBrandCardState extends State<AnimatedBrandCard> {
           curve: Curves.easeInOut,
           child: Container(
             width: widget.width,
-            margin: const EdgeInsets.symmetric(horizontal: 16),
+            margin: EdgeInsets.zero,
             child: AnimatedOpacity(
               duration: const Duration(milliseconds: 300),
               opacity: _hovering ? 1.0 : 0.85,

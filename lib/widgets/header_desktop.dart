@@ -14,7 +14,7 @@ import 'dart:html' as html;
 
 class HeaderDesktop extends StatelessWidget {
   const HeaderDesktop({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     final currentLang = context.locale.languageCode;

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Footer extends StatelessWidget {
   const Footer({super.key});
@@ -17,10 +18,7 @@ class Footer extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             '© 2025 Maham. All Rights Reserved'.tr(),
-            style: TextStyle(
-              color: Colors.grey[600],
-              fontSize: 14,
-            ),
+            style: TextStyle(color: Colors.grey[600], fontSize: 14),
           ),
         ],
       ),
@@ -28,22 +26,22 @@ class Footer extends StatelessWidget {
   }
 
   Widget buildLinksRow(BuildContext context) {
-    final linkKeys = [
-      'Usage conditions',
-      'Terms and conditions',
-      'Privacy policy',
-      'Jobs applications',
-      'Contact us',
-      'franchise',
-    ];
+    final links = [
+    {'text': 'Usage conditions', 'route': '/usage_conditions'},
+    {'text': 'Terms and conditions', 'route': '/terms_and_conditions'},
+    {'text': 'Privacy policy', 'route': '/privacy_policy'},
+    {'text': 'Jobs applications', 'route': '/jobs_applications'},
+    {'text': 'Contact us', 'route': '/contact'},
+    {'text': 'franchise', 'route': '/franchise'},
+  ];
 
     return Wrap(
       alignment: WrapAlignment.center,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        for (int i = 0; i < linkKeys.length; i++) ...[
-          buildLink(linkKeys[i].tr()),
-          if (i != linkKeys.length - 1)
+        for (int i = 0; i < links.length; i++) ...[
+          buildLink(context, links[i]['text']!.tr(), links[i]['route']!),
+          if (i != links.length - 1)
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
               child: VerticalDivider(
@@ -52,14 +50,17 @@ class Footer extends StatelessWidget {
                 color: Colors.grey,
               ),
             ),
-        ]
+        ],
       ],
     );
   }
 
-  Widget buildLink(String text) {
+  Widget buildLink(BuildContext context, String text, String route) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        final lang = context.locale.languageCode;
+        GoRouter.of(context).go('/$lang$route');
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4),
         child: Text(

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:maham_website/constants/colors.dart';
 import 'package:maham_website/dio_helper.dart';
-import 'package:maham_website/pages/mainDesk_pages/posts_screen.dart';
-import 'package:maham_website/services/api_service.dart';
+
 
 class MainDesktop extends StatelessWidget {
   const MainDesktop({super.key});
@@ -20,13 +19,7 @@ class MainDesktop extends StatelessWidget {
     }
   }
 
-  /// هنا بعمل function عشان أجيب البيانات من الـ API
-  void _fetchAboutUs() async {
-    final apiService = ApiService();
-    final data = await apiService.getAboutUs();
-    print('API Response: $data');
-    // هنا ممكن تعرض البيانات في الـ UI بالطريقة اللي تحبها
-  }
+
 
   @override
   Widget build(BuildContext context) {

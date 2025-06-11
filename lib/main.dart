@@ -10,6 +10,11 @@ import 'package:maham_website/pages/brands_pages/emdad_ar.dart';
 import 'package:maham_website/pages/brands_pages/emdad_en.dart';
 import 'package:maham_website/pages/brands_pages/kuken.dart';
 import 'package:maham_website/pages/brands_pages/pro_guard.dart';
+import 'package:maham_website/pages/footer_pages/franchise.dart';
+import 'package:maham_website/pages/footer_pages/jobs_applications.dart';
+import 'package:maham_website/pages/footer_pages/privacy_policy.dart';
+import 'package:maham_website/pages/footer_pages/terms_and_conditions.dart';
+import 'package:maham_website/pages/footer_pages/usage_conditions.dart';
 import 'package:maham_website/pages/header_pages/blog.dart';
 import 'package:maham_website/pages/header_pages/contact.dart';
 import 'package:maham_website/pages/header_pages/projects.dart';
@@ -136,6 +141,41 @@ final GoRouter _router = GoRouter(
       builder: (context, state) {
         final lang = state.pathParameters['lang']!;
         return Cartel(language: lang);
+      },
+    ),
+    GoRoute(
+      path: '/:lang/usage_conditions',
+      builder: (context, state) {
+        final lang = state.pathParameters['lang']!;
+        return UsageConditions(language: lang); 
+      },
+    ),
+    GoRoute(
+      path: '/:lang/terms_and_conditions',
+      builder: (context, state) {
+        final lang = state.pathParameters['lang']!;
+        return TermsAndConditions(language: lang); 
+      },
+    ),
+    GoRoute(
+      path: '/:lang/privacy_policy',
+      builder: (context, state) {
+        final lang = state.pathParameters['lang']!;
+        return PrivacyPolicy(language: lang); 
+      },
+    ),
+    GoRoute(
+      path: '/:lang/jobs_applications',
+      builder: (context, state) {
+        final lang = state.pathParameters['lang']!;
+        return JobsApplications(language: lang); 
+      },
+    ),
+    GoRoute(
+      path: '/:lang/franchise',
+      builder: (context, state) {
+        final lang = state.pathParameters['lang']!;
+        return Franchise(language: lang); 
       },
     ),
   ],
