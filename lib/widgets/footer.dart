@@ -30,7 +30,7 @@ class Footer extends StatelessWidget {
     {'text': 'Usage conditions', 'route': '/usage_conditions'},
     {'text': 'Terms and conditions', 'route': '/terms_and_conditions'},
     {'text': 'Privacy policy', 'route': '/privacy_policy'},
-    {'text': 'Jobs applications', 'route': '/jobs_applications'},
+    {'text': 'Job applications', 'route': '/job_applications'},
     {'text': 'Contact us', 'route': '/contact'},
     {'text': 'franchise', 'route': '/franchise'},
   ];

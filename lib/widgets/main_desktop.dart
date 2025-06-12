@@ -65,17 +65,6 @@ class MainDesktop extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 15),
-                SizedBox(
-                  width: 250.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      final lang = context.locale.languageCode;
-                      context.go('/$lang/posts');
-                    },
-                    child: Text('Get Posts (Test)'),
-                  ),
-                ),
               ],
             ),
           ),

@@ -11,7 +11,7 @@ import 'package:maham_website/pages/brands_pages/emdad_en.dart';
 import 'package:maham_website/pages/brands_pages/kuken.dart';
 import 'package:maham_website/pages/brands_pages/pro_guard.dart';
 import 'package:maham_website/pages/footer_pages/franchise.dart';
-import 'package:maham_website/pages/footer_pages/jobs_applications.dart';
+import 'package:maham_website/pages/footer_pages/job_applications.dart';
 import 'package:maham_website/pages/footer_pages/privacy_policy.dart';
 import 'package:maham_website/pages/footer_pages/terms_and_conditions.dart';
 import 'package:maham_website/pages/footer_pages/usage_conditions.dart';
@@ -21,7 +21,6 @@ import 'package:maham_website/pages/header_pages/projects.dart';
 import 'package:maham_website/pages/header_pages/skills.dart';
 import 'package:maham_website/pages/home_page.dart';
 import 'package:maham_website/dio_helper.dart';
-import 'package:maham_website/pages/mainDesk_pages/posts_screen.dart';
 import 'package:maham_website/widgets/main_desktop.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart'; // This comes from Flutter SDK
 
@@ -71,13 +70,6 @@ final GoRouter _router = GoRouter(
       builder: (context, state) {
         final lang = state.pathParameters['lang']!;
         return Contact(language: lang);
-      },
-    ),
-    GoRoute(
-      path: '/:lang/posts',
-      builder: (context, state) {
-        final lang = state.pathParameters['lang']!;
-        return PostsScreen(language: lang);
       },
     ),
     GoRoute(
@@ -165,10 +157,10 @@ final GoRouter _router = GoRouter(
       },
     ),
     GoRoute(
-      path: '/:lang/jobs_applications',
+      path: '/:lang/job_applications',
       builder: (context, state) {
         final lang = state.pathParameters['lang']!;
-        return JobsApplications(language: lang); 
+        return JobApplications(language: lang); 
       },
     ),
     GoRoute(
