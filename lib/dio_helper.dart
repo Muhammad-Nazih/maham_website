@@ -13,6 +13,7 @@ class DioHelper {
         receiveTimeout: Duration(seconds: 10),
       ),
     );
+    
   }
 
   // GET request

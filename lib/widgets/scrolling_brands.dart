@@ -30,7 +30,7 @@ class ScrollingBrandsBannerState extends State<ScrollingBrandsBanner> {
     SubBrand(name: 'إمداد', logoUrl: 'images/emdad_ar.png'),
   ];
 
-  final double spacing = 16; // 16 left + 16 right margin
+  final double spacing = 16; 
 
   @override
   void initState() {
@@ -45,26 +45,36 @@ class ScrollingBrandsBannerState extends State<ScrollingBrandsBanner> {
   }
 
   void scrollCards(double cardWidth, {required bool forward}) {
-    final offsetPerCard = cardWidth + spacing;
-    final maxScroll = scrollController.position.maxScrollExtent;
-    final currentScroll = scrollController.offset;
+  final offsetPerCard = cardWidth + spacing;
+  final scrollAmount = offsetPerCard * 3;
+  final maxScroll = scrollController.position.maxScrollExtent;
+  final currentScroll = scrollController.offset;
 
-    double nextScroll =
-        forward ? currentScroll + offsetPerCard : currentScroll - offsetPerCard;
+  double nextScroll = forward
+      ? currentScroll + scrollAmount
+      : currentScroll - scrollAmount;
 
-    // Looping logic
-    if (nextScroll > maxScroll - offsetPerCard) {
-      nextScroll = 0; // رجع للبداية
-    } else if (nextScroll < 0) {
-      nextScroll = maxScroll; // راح للنهاية
+  scrollController.animateTo(
+    nextScroll,
+    duration: const Duration(milliseconds: 500),
+    curve: Curves.easeInOut,
+  );
+
+  Future.delayed(const Duration(milliseconds: 550), () {
+    final loopLength = brands.length * offsetPerCard;
+
+    if (nextScroll >= maxScroll - (offsetPerCard * 3)) {
+      scrollController.jumpTo(
+          scrollController.offset - loopLength); // يعيد نفسه قدام
     }
 
-    scrollController.animateTo(
-      nextScroll,
-      duration: const Duration(milliseconds: 400),
-      curve: Curves.easeInOut,
-    );
-  }
+    if (nextScroll <= 0) {
+      scrollController.jumpTo(
+          scrollController.offset + loopLength); // يعيد نفسه ورا
+    }
+  });
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +104,7 @@ class ScrollingBrandsBannerState extends State<ScrollingBrandsBanner> {
               padding: EdgeInsets.zero,
               controller: scrollController,
               scrollDirection: Axis.horizontal,
-              itemCount: brands.length,
+              itemCount: brands.length * 2,
               itemBuilder: (context, index) {
                 final brand = brands[index % brands.length];
                 return AnimatedBrandCard(brand: brand, width: cardWidth);
