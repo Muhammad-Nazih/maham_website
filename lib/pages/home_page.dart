@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:maham_website/constants/size.dart';
+import 'package:maham_website/core/constants/size.dart';
 import 'package:maham_website/widgets/drawer_mobile.dart';
 import 'package:maham_website/widgets/footer.dart';
 import 'package:maham_website/widgets/header_desktop.dart';

@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:maham_website/constants/colors.dart';
-import 'package:maham_website/dio_helper.dart';
+import 'package:maham_website/core/constants/colors.dart';
+import 'package:maham_website/core/utils/dio_helper.dart';
 
 
 class MainDesktop extends StatelessWidget {

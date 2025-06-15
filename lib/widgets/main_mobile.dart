@@ -1,5 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:maham_website/constants/colors.dart';
+import 'package:maham_website/core/constants/colors.dart';
 
 class MainMobile extends StatelessWidget {
   const MainMobile({super.key});
@@ -23,7 +24,7 @@ class MainMobile extends StatelessWidget {
                     ),
                     SizedBox(height: 30.0),
                     Text(
-                      'Hi There, \nThis is Maham Business \nProcess Management Website',
+                      'main_title'.tr(),
                       maxLines: 3,
                       style: TextStyle(
                         height: 1.5,
@@ -41,7 +42,7 @@ class MainMobile extends StatelessWidget {
                         ),
                         onPressed: () {},
                         child: Text(
-                          'Get In Touch',
+                          'get_in_touch'.tr(),
                           style: TextStyle(color: CustomColor.whitePrimary),
                         ),
                       ),

@@ -1,20 +1,21 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:maham_website/constants/colors.dart';
-import 'package:maham_website/constants/components.dart';
-import 'package:maham_website/constants/nav_items.dart';
+import 'package:maham_website/core/constants/colors.dart';
+import 'package:maham_website/core/constants/components.dart';
+import 'package:maham_website/core/constants/nav_items.dart';
+import 'package:maham_website/core/utils/dio_helper.dart';
 import 'package:maham_website/pages/header_pages/blog.dart';
 import 'package:maham_website/pages/header_pages/contact.dart';
 import 'package:maham_website/pages/header_pages/projects.dart';
 import 'package:maham_website/pages/header_pages/skills.dart';
-import 'package:maham_website/styles/style.dart';
+import 'package:maham_website/core/styles/style.dart';
 import 'package:maham_website/widgets/site_logo.dart';
 import 'dart:html' as html;
 
 class HeaderDesktop extends StatelessWidget {
   const HeaderDesktop({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     final currentLang = context.locale.languageCode;
@@ -48,6 +49,9 @@ class HeaderDesktop extends StatelessWidget {
               // 2. Change the locale FIRST to trigger rebuild
               await context.setLocale(newLocale);
 
+              // ✅ هنا: علشان اللغة تتبعت في كل طلب
+              DioHelper.currentLanguage = newLocale.languageCode;
+              
               // 3. Wait for the next frame to ensure widgets rebuilt
               await Future.delayed(Duration.zero);
 
@@ -56,7 +60,7 @@ class HeaderDesktop extends StatelessWidget {
             },
             child: Row(
               children: [
-                Icon(Icons.translate, color: Colors.black),
+                Icon(Icons.language, color: Colors.black),
                 SizedBox(width: 10.0),
                 Text(
                   'language'.tr(),

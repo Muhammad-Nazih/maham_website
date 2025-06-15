@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maham_website/constants/colors.dart';
+import 'package:maham_website/core/constants/colors.dart';
 
 BoxDecoration kHeaderDecoration = BoxDecoration(
   gradient: LinearGradient(
