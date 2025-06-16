@@ -27,7 +27,9 @@
   "email_hint": "Enter your email address",
   "phone_hint": "Enter your phone number",
   "subject_hint": "Enter message subject",
-  "message_hint": "Type your message here..."
+  "message_hint": "Type your message here...",
+  "message_sent_success": "Message sent successfully!",
+"message_sent_fail": "Failed to send message. Try again."
 }
 
 
